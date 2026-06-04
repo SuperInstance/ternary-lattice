@@ -1,0 +1,10 @@
+[package]
+name = "ternary-lattice"
+version = "0.1.0"
+edition = "2021"
+description = "Lattice structures for ternary values with partial order, semilattices, lattice maps, and morphisms"
+license = "MIT"
+authors = ["SuperInstance"]
+repository = "https://github.com/SuperInstance/ternary-lattice"
+keywords = ["ternary", "lattice", "algebra", "partial-order"]
+categories = ["algorithms", "data-structures", "mathematics"]
