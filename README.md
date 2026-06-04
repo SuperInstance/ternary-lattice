@@ -76,6 +76,18 @@ Meet and join are computed pointwise under the chosen ordering. The `MeetSemilat
 - **Formal verification**: Lattice morphisms and monotonicity checking provide a lightweight framework for proving properties of ternary transformations.
 - **Embedded signal classification**: `no_std` compatible — use lattice operations for ternary sensor fusion on microcontrollers.
 
+## Known Limitations
+
+- **Flat ordering treats conflicting inputs as bottom**: Under `LatticeOrder::Flat`, the meet of `Neg` and `Pos` is `Zero` (bottom). This means if two sources disagree (one says Neg, one says Pos), the result is "unknown" — information is discarded rather than preserved as a conflict flag. Use `LatticeMap::merge_meet()` and check for key collisions if you need conflict detection.
+
+- **`LatticeMorphism::is_monotone()` is O(n²)**: Monotonicity checking tests all pairs of input values under the source ordering. For the ternary domain this is fine (3² = 9 pairs), but the implementation doesn't generalize — it hardcodes the three-element lattice, so composing morphisms with `compose()` and re-checking monotonicity always runs the same 9 checks regardless of the composed function's structure.
+
+- **`LatticeMap` uses `BTreeMap`, not a flat array**: Since there are only 3 possible keys (Neg, Zero, Pos), using `BTreeMap<Ternary, V>` allocates heap memory for tree nodes. A flat `[Option<V>; 3]` array would be more efficient and avoid allocation, which matters in `no_std` environments.
+
+- **No Galois connection support**: The crate provides morphisms (functions between lattices) but not Galois connections (adjoint pairs of monotone functions), which are the standard tool for abstract interpretation and program analysis.
+
+- **`MeetSemilattice` and `JoinSemilattice` don't track insertion order**: The `meet_all()` / `join_all()` results depend only on the set of inserted values, not their order. If you need to know *when* a conflict occurred, you must track it externally.
+
 ## Ecosystem
 
 Part of the **SuperInstance** ternary computing suite:
