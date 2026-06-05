@@ -106,3 +106,11 @@ Part of the **SuperInstance** ternary computing suite:
 ## License
 
 MIT
+
+## See Also
+- **ternary-ring** — related
+- **ternary-algebra** — related
+- **ternary-topology** — related
+- **ternary-tuple** — related
+- **ternary-logic** — related
+
