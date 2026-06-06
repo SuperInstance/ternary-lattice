@@ -2,6 +2,6 @@
 name = "ternary-lattice"
 version = "0.1.0"
 edition = "2021"
-
-[lib]
-path = "lib.rs"
+description = "Ternary lattice operations for lightweight cryptography. Lattice-based operations over Z₃: vector add, matrix multiply, short vector problems. Post-quantum friendly."
+license = "Apache-2.0"
+repository = "https://github.com/SuperInstance/ternary-lattice"
