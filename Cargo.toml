@@ -1,6 +1,6 @@
 [package]
 name = "ternary-lattice"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Ternary lattice operations for lightweight cryptography. Lattice-based operations over Z₃: vector add, matrix multiply, short vector problems. Post-quantum friendly."
 license = "Apache-2.0"
