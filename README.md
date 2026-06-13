@@ -88,3 +88,11 @@ use ternary_lattice;
 ## License
 
 MIT
+
+## See Also
+- **ternary-ring** — related
+- **ternary-algebra** — related
+- **ternary-topology** — related
+- **ternary-tuple** — related
+- **ternary-logic** — related
+
